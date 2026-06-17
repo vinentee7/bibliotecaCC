@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h1>📚 Biblioteca</h1>
+
+        <!-- Mensagem de feedback (erro/sucesso) -->
+        <p id="mensagem" class="mensagem"></p>
+
+        <!-- Abas -->
+        <div class="abas">
+            <button id="aba-login" class="aba ativa" onclick="mostrarAba('login')">Entrar</button>
+            <button id="aba-registro" class="aba" onclick="mostrarAba('registro')">Cadastrar</button>
+        </div>
+
+        <!-- Formulário de Login -->
+        <form id="form-login" class="form">
+            <h2>Login</h2>
+            <label>Email
+                <input type="email" id="login-email" required>
+            </label>
+            <label>Senha
+                <input type="password" id="login-senha" required>
+            </label>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <!-- Formulário de Registro -->
+        <form id="form-registro" class="form escondido">
+            <h2>Criar conta</h2>
+            <label>Nome
+                <input type="text" id="reg-nome" required>
+            </label>
+            <label>Email
+                <input type="email" id="reg-email" required>
+            </label>
+            <label>Senha
+                <input type="password" id="reg-senha" required>
+            </label>
+            <label>Perfil
+                <select id="reg-perfil" required>
+                    <option value="leitor">Leitor</option>
+                    <option value="bibliotecario">Bibliotecário</option>
+                </select>
+            </label>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

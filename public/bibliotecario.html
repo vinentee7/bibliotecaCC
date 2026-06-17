@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Bibliotecário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Painel do Bibliotecário</h1>
+        <div class="usuario-info">
+            <span id="nome-usuario"></span>
+            <button class="btn-sair" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <main>
+        <p id="mensagem" class="mensagem"></p>
+
+        <!-- Cadastro / edição de livro -->
+        <section class="card">
+            <h2 id="titulo-form">Cadastrar novo livro</h2>
+            <form id="form-livro">
+                <input type="hidden" id="livro-id">
+                <div class="form-linha">
+                    <label>Título
+                        <input type="text" id="livro-titulo" required>
+                    </label>
+                    <label>Autor
+                        <input type="text" id="livro-autor" required>
+                    </label>
+                </div>
+                <div class="form-linha">
+                    <label>Ano de publicação
+                        <input type="number" id="livro-ano" min="0">
+                    </label>
+                    <label>Quantidade disponível
+                        <input type="number" id="livro-quantidade" min="0" required>
+                    </label>
+                </div>
+                <button type="submit">Salvar livro</button>
+                <button type="button" id="btn-cancelar" class="escondido" onclick="cancelarEdicao()">Cancelar</button>
+            </form>
+        </section>
+
+        <!-- Listagem de livros -->
+        <section class="card">
+            <h2>Acervo de livros</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Título</th><th>Autor</th>
+                        <th>Ano</th><th>Qtd. disponível</th><th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-livros"></tbody>
+            </table>
+        </section>
+
+        <!-- Listagem de empréstimos -->
+        <section class="card">
+            <h2>Empréstimos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Leitor</th><th>Livro</th>
+                        <th>Empréstimo</th><th>Prev. devolução</th>
+                        <th>Status</th><th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-emprestimos"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="bibliotecario.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "bibliotecacc",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de empréstimos de livros (N2 - AT2 - Programação para Web)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "author": "Samuel T. Vinente",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3"
+  }
+}

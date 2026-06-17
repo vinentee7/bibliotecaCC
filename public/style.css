@@ -1,0 +1,201 @@
+/* ============================================================
+   Estilos gerais do sistema da Biblioteca
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f2f5;
+    color: #1c1e21;
+    line-height: 1.5;
+}
+
+/* ---------- Cabeçalho dos painéis ---------- */
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+header h1 {
+    font-size: 1.4rem;
+}
+
+header .usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+}
+
+.btn-sair {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-sair:hover { background: #c0392b; }
+
+main {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+/* ---------- Cartões / seções ---------- */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+/* ---------- Tabelas ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #e1e4e8;
+    font-size: 0.92rem;
+}
+
+th {
+    background: #f6f8fa;
+    color: #57606a;
+}
+
+tr:hover td { background: #fafbfc; }
+
+/* ---------- Botões ---------- */
+button {
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    background: #3498db;
+    color: #fff;
+}
+button:hover { opacity: 0.9; }
+
+.btn-acao {
+    padding: 6px 10px;
+    margin-right: 4px;
+    font-size: 0.82rem;
+}
+.btn-editar  { background: #f39c12; }
+.btn-excluir { background: #e74c3c; }
+.btn-ok      { background: #27ae60; }
+
+/* ---------- Formulários ---------- */
+form label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 9px;
+    margin-top: 4px;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.form-linha {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.form-linha label { flex: 1; min-width: 140px; }
+
+/* ---------- Tela de autenticação (index) ---------- */
+.auth-container {
+    max-width: 380px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.auth-container h1 { margin-bottom: 16px; color: #2c3e50; }
+.auth-container h2 { margin-bottom: 16px; font-size: 1.1rem; text-align: left; }
+.auth-container form { text-align: left; }
+.auth-container button[type="submit"] { width: 100%; margin-top: 8px; padding: 10px; }
+
+.abas {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e1e4e8;
+}
+.aba {
+    flex: 1;
+    background: none;
+    color: #57606a;
+    border-radius: 0;
+    padding: 10px;
+}
+.aba.ativa {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    margin-bottom: -2px;
+    font-weight: 600;
+}
+
+/* ---------- Utilitários ---------- */
+.escondido { display: none; }
+
+.mensagem {
+    min-height: 20px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.mensagem.erro    { color: #e74c3c; }
+.mensagem.sucesso { color: #27ae60; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+}
+.badge.ativo     { background: #3498db; }
+.badge.devolvido { background: #27ae60; }
+.badge.atrasado  { background: #e74c3c; }
+
+.vazio {
+    color: #888;
+    font-style: italic;
+    padding: 12px 0;
+}
