@@ -1,7 +1,3 @@
-// ============================================================
-// leitor.js - Painel do Leitor
-// ============================================================
-
 const API = '/api';
 
 const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
@@ -41,9 +37,6 @@ function formatarData(data) {
     return new Date(data).toLocaleDateString('pt-BR');
 }
 
-// ============================================================
-// Catálogo de livros
-// ============================================================
 async function carregarLivros() {
     const resp = await fetch(`${API}/livros`, { headers: authHeaders() });
     const livros = await resp.json();
@@ -118,9 +111,6 @@ async function solicitarEmprestimo(livroId) {
     carregarEmprestimos();
 }
 
-// ============================================================
-// Meus empréstimos
-// ============================================================
 async function carregarEmprestimos() {
     const resp = await fetch(`${API}/emprestimos?leitor_id=${usuario.id}`, { headers: authHeaders() });
     const lista = await resp.json();
@@ -166,9 +156,6 @@ async function solicitarDevolucao(id) {
     carregarEmprestimos();
 }
 
-// ============================================================
-// Busca
-// ============================================================
 function configurarBusca() {
     const campo = document.getElementById('busca-livro');
     if (!campo) return;
@@ -193,13 +180,9 @@ function configurarBusca() {
     });
 }
 
-// ============================================================
-// Inicialização
-// ============================================================
 const primeiroNome = usuario.nome.split(' ')[0];
 document.getElementById('nome-usuario').textContent = `Olá, ${primeiroNome}`;
 
-// Gera iniciais para o avatar
 const avatarEl = document.getElementById('avatar-iniciais');
 if (avatarEl) {
     const partes = usuario.nome.trim().split(' ');

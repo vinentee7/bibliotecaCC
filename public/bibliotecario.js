@@ -1,16 +1,10 @@
-// ============================================================
-// bibliotecario.js - Painel do Bibliotecário
-// ============================================================
-
 const API = '/api';
 
-// Recupera o usuário logado; se não for bibliotecário, volta ao login
 const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
 if (!usuario || usuario.perfil !== 'bibliotecario') {
     window.location.href = 'index.html';
 }
 
-// Cabeçalhos enviados em toda requisição (identificam quem está agindo)
 function authHeaders() {
     return {
         'Content-Type': 'application/json',
@@ -31,7 +25,6 @@ function mostrarMensagem(texto, tipo = 'erro') {
     if (texto) setTimeout(() => mostrarMensagem(''), 4000);
 }
 
-// Evita problemas com caracteres especiais ao montar HTML
 function esc(txt) {
     const d = document.createElement('div');
     d.textContent = txt ?? '';
@@ -43,9 +36,6 @@ function formatarData(data) {
     return new Date(data).toLocaleDateString('pt-BR');
 }
 
-// ============================================================
-// LIVROS
-// ============================================================
 async function carregarLivros() {
     const resp = await fetch(`${API}/livros`);
     const livros = await resp.json();
@@ -97,7 +87,6 @@ async function carregarLivros() {
 `).join('');
 }
 
-// Submissão do formulário (cria ou atualiza)
 document.getElementById('form-livro').addEventListener('submit', async (e) => {
     e.preventDefault();
     const id = document.getElementById('livro-id').value;
@@ -162,9 +151,6 @@ async function excluirLivro(id) {
     carregarLivros();
 }
 
-// ============================================================
-// EMPRÉSTIMOS
-// ============================================================
 async function carregarEmprestimos() {
     const resp = await fetch(`${API}/emprestimos`);
     const lista = await resp.json();
@@ -236,7 +222,6 @@ if (campoCapa) {
     });
 }
 
-// ---------- Inicialização ----------
 document.getElementById('nome-usuario').textContent = `Olá, ${usuario.nome}`;
 carregarLivros();
 carregarEmprestimos();

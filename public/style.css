@@ -11,9 +11,6 @@ body {
     line-height: 1.5;
 }
 
-/* ============================================================
-   CABEÇALHO
-   ============================================================ */
 header {
     background: #1a2236;
     color: #fff;
@@ -82,18 +79,12 @@ header {
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ============================================================
-   LAYOUT PRINCIPAL
-   ============================================================ */
 main {
     max-width: 1060px;
     margin: 28px auto;
     padding: 0 20px;
 }
 
-/* ============================================================
-   CARTÕES / SEÇÕES
-   ============================================================ */
 .card {
     background: #fff;
     border-radius: 12px;
@@ -126,9 +117,6 @@ main {
     white-space: nowrap;
 }
 
-/* ============================================================
-   BUSCA
-   ============================================================ */
 .search-wrapper {
     position: relative;
     margin-bottom: 20px;
@@ -166,9 +154,6 @@ main {
     color: #adb5bd;
 }
 
-/* ============================================================
-   CATÁLOGO DE LIVROS
-   ============================================================ */
 .catalogo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -190,7 +175,6 @@ main {
     transform: translateY(-3px);
 }
 
-/* Wrapper da capa para manter proporção consistente */
 .capa-wrapper {
     position: relative;
     width: 100%;
@@ -207,7 +191,6 @@ main {
     display: block;
 }
 
-/* Badge de disponibilidade sobre a capa */
 .capa-badge {
     position: absolute;
     top: 8px;
@@ -229,7 +212,6 @@ main {
     background: rgba(185, 28, 28, 0.75);
 }
 
-/* Conteúdo do card */
 .livro-info {
     padding: 14px;
     display: flex;
@@ -299,9 +281,6 @@ main {
     cursor: not-allowed;
 }
 
-/* ============================================================
-   TABELA DE EMPRÉSTIMOS
-   ============================================================ */
 .table-wrapper {
     overflow-x: auto;
     border-radius: 8px;
@@ -337,9 +316,6 @@ tr:hover td {
     background: #fafbff;
 }
 
-/* ============================================================
-   BOTÕES DE AÇÃO (TABELA)
-   ============================================================ */
 button {
     font-family: inherit;
 }
@@ -363,9 +339,6 @@ button {
 .btn-excluir { background: #ef4444; }
 .btn-ok      { background: #16a34a; }
 
-/* ============================================================
-   FORMULÁRIOS
-   ============================================================ */
 form label {
     display: block;
     margin-bottom: 12px;
@@ -403,9 +376,6 @@ form select:focus {
     min-width: 140px;
 }
 
-/* ============================================================
-   TELA DE AUTENTICAÇÃO (index)
-   ============================================================ */
 .auth-container {
     max-width: 380px;
     margin: 60px auto;
@@ -447,9 +417,6 @@ form select:focus {
     font-weight: 600;
 }
 
-/* ============================================================
-   MENSAGENS E UTILITÁRIOS
-   ============================================================ */
 .escondido { display: none; }
 
 .mensagem {
@@ -468,9 +435,6 @@ form select:focus {
     color: #16a34a;
 }
 
-/* ============================================================
-   BADGES DE STATUS
-   ============================================================ */
 .badge {
     display: inline-block;
     padding: 3px 10px;
@@ -486,9 +450,6 @@ form select:focus {
 .badge.atrasado  { background: #fee2e2; color: #b91c1c; }
 .badge.pendente  { background: #fef3c7; color: #92400e; }
 
-/* ============================================================
-   VAZIO / PLACEHOLDER
-   ============================================================ */
 .vazio {
     color: #9aa0ac;
     font-style: italic;
@@ -496,9 +457,6 @@ form select:focus {
     text-align: center;
 }
 
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
 @media (max-width: 768px) {
     header {
         padding: 0 16px;
@@ -565,7 +523,6 @@ body.auth-page {
     min-height: 100vh;
 }
  
-/* --- Lado esquerdo --- */
 .auth-left {
     flex: 1;
     background: linear-gradient(140deg, #13182b 0%, #39456a 55%, #f7f7f7 100%);
@@ -646,7 +603,6 @@ body.auth-page {
     margin: 0;
 }
  
-/* --- Lado direito --- */
 .auth-right {
     width: 580px;
     flex-shrink: 0;
@@ -677,8 +633,7 @@ body.auth-page {
  
 .card-brand-icon { font-size: 1.6rem; }
 .card-brand-name { font-size: 1.2rem; font-weight: 700; color: #1a2236; }
- 
-/* Abas dentro do card */
+
 .abas {
     display: flex;
     border-bottom: 2px solid #e4e7ec;
@@ -721,47 +676,9 @@ body.auth-page {
     font-size: 0.86rem;
     color: #64748b;
     margin-bottom: 22px;
-}
- 
-/* Campos com ícone */
+} 
+
 .field-group  { margin-bottom: 14px; }
- 
-.field-label {
-    display: block;
-    font-size: 0.86rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 6px;
-}
- 
-.field-input-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
- 
-.field-icon {
-    position: absolute;
-    left: 12px;
-    font-size: 1rem;
-    pointer-events: none;
-    opacity: 0.55;
-}
- 
-.field-input-wrap input,
-.field-input-wrap select {
-    width: 100%;
-    padding: 11px 12px 11px 38px;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 9px;
-    font-size: 0.92rem;
-    font-family: inherit;
-    color: #1a2236;
-    background: #f8fafc;
-    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
-    outline: none;
-    margin-top: 0;
-}
  
 .field-input-wrap input:focus,
 .field-input-wrap select:focus {
