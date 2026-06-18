@@ -102,15 +102,15 @@ router.get('/livros/:id', async (req, res) => {
 
 router.post('/livros', requirePerfil('bibliotecario'), async (req, res) => {
     try {
-        const { titulo, autor, ano_publicacao, quantidade_disponivel } = req.body;
+        const { titulo, autor, ano_publicacao, quantidade_disponivel, capa } = req.body;
 
         if (!titulo || !autor || quantidade_disponivel == null) {
             return res.status(400).json({ erro: 'Título, autor e quantidade são obrigatórios.' });
         }
 
         const [resultado] = await db.query(
-            'INSERT INTO livros (titulo, autor, ano_publicacao, quantidade_disponivel) VALUES (?, ?, ?, ?)',
-            [titulo, autor, ano_publicacao || null, quantidade_disponivel]
+            'INSERT INTO livros (titulo, autor, ano_publicacao, quantidade_disponivel, capa) VALUES (?, ?, ?, ?, ?)',
+            [titulo, autor, ano_publicacao || null, quantidade_disponivel, capa]
         );
 
         res.status(201).json({ mensagem: 'Livro cadastrado com sucesso!', id: resultado.insertId });
@@ -122,7 +122,7 @@ router.post('/livros', requirePerfil('bibliotecario'), async (req, res) => {
 
 router.put('/livros/:id', requirePerfil('bibliotecario'), async (req, res) => {
     try {
-        const { titulo, autor, ano_publicacao, quantidade_disponivel } = req.body;
+        const { titulo, autor, ano_publicacao, quantidade_disponivel, capa } = req.body;
 
         if (!titulo || !autor || quantidade_disponivel == null) {
             return res.status(400).json({ erro: 'Título, autor e quantidade são obrigatórios.' });
@@ -130,9 +130,9 @@ router.put('/livros/:id', requirePerfil('bibliotecario'), async (req, res) => {
 
         const [resultado] = await db.query(
             `UPDATE livros
-                SET titulo = ?, autor = ?, ano_publicacao = ?, quantidade_disponivel = ?
+                SET titulo = ?, autor = ?, ano_publicacao = ?, quantidade_disponivel = ?, capa = ?
               WHERE id = ?`,
-            [titulo, autor, ano_publicacao || null, quantidade_disponivel, req.params.id]
+            [titulo, autor, ano_publicacao || null, quantidade_disponivel, capa , req.params.id]
         );
 
         if (resultado.affectedRows === 0) {
@@ -257,6 +257,9 @@ router.put('/emprestimos/:id/devolver', requirePerfil('bibliotecario'), async (r
         }
         if (emprestimos[0].status === 'devolvido') {
             return res.status(400).json({ erro: 'Este empréstimo já foi devolvido.' });
+        }
+        if (!emprestimos[0].data_devolucao_real) {
+            return res.status(400).json({ erro: 'Devolução ainda não foi solicitada.' });
         }
 
         await db.query(

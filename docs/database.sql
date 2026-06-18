@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS livros (
   titulo                 VARCHAR(200) NOT NULL,
   autor                  VARCHAR(150) NOT NULL,
   ano_publicacao         INT NULL,
-  quantidade_disponivel  INT NOT NULL DEFAULT 0
+  quantidade_disponivel  INT NOT NULL DEFAULT 0,
+  capa                   VARCHAR(500) NULL
 );
 
 CREATE TABLE IF NOT EXISTS emprestimos (

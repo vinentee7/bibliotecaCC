@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,45 +7,63 @@
 </head>
 <body>
     <header>
-        <h1>📖 Painel do Leitor</h1>
+        <div class="nav-brand">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Painel do Leitor
+        </div>
         <div class="usuario-info">
             <span id="nome-usuario"></span>
+            <div class="avatar" id="avatar-iniciais" aria-hidden="true"></div>
             <button class="btn-sair" onclick="sair()">Sair</button>
         </div>
     </header>
-
+ 
     <main>
         <p id="mensagem" class="mensagem"></p>
-
+ 
         <!-- Catálogo de livros disponíveis -->
         <section class="card">
-            <h2>Livros disponíveis</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th><th>Título</th><th>Autor</th>
-                        <th>Ano</th><th>Qtd. disponível</th><th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-livros"></tbody>
-            </table>
+            <div class="section-header">
+                <h2>Catálogo de Livros</h2>
+                <span class="badge-count" id="total-livros"></span>
+            </div>
+ 
+            <div class="search-wrapper">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input
+                    type="text"
+                    id="busca-livro"
+                    class="campo-busca"
+                    placeholder="Buscar por título ou autor..."
+                    aria-label="Buscar livro"
+                >
+            </div>
+ 
+            <div id="catalogo-livros" class="catalogo-grid"></div>
         </section>
-
+ 
         <!-- Meus empréstimos -->
         <section class="card">
-            <h2>Meus empréstimos</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Livro</th><th>Empréstimo</th>
-                        <th>Prev. devolução</th><th>Status</th><th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-emprestimos"></tbody>
-            </table>
+            <div class="section-header">
+                <h2>Meus empréstimos</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Livro</th>
+                            <th>Empréstimo</th>
+                            <th>Prev. devolução</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-emprestimos"></tbody>
+                </table>
+            </div>
         </section>
     </main>
-
+ 
     <script src="leitor.js"></script>
 </body>
 </html>

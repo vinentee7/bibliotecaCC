@@ -3,56 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca - Login</title>
+    <title>BookFlow - Biblioteca Digital</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="auth-container">
-        <h1>📚 Biblioteca</h1>
 
-        <!-- Mensagem de feedback (erro/sucesso) -->
-        <p id="mensagem" class="mensagem"></p>
+<body class="auth-page">
+    <header>
+        <div class="nav-brand">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            BookFlow - Biblioteca Digital
+        </div>
+    </header>
 
-        <!-- Abas -->
-        <div class="abas">
-            <button id="aba-login" class="aba ativa" onclick="mostrarAba('login')">Entrar</button>
-            <button id="aba-registro" class="aba" onclick="mostrarAba('registro')">Cadastrar</button>
+    <div class="auth-split">
+        <div class="auth-left">
+            <div class="auth-left-inner">
+
+                <h1 class="auth-headline">
+                    Bem-vindo ao<br>
+                    <span class="auth-headline-accent">BookFlow</span>
+                </h1>
+
+                <p class="auth-subline">
+                    Sua plataforma completa para explorar, emprestar e gerenciar livros de forma simples e inteligente.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon feature-icon--blue">📖</span>
+                        <div>
+                            <strong>Catálogo Completo</strong>
+                            <p>Encontre livros incríveis para ler e aprender.</p>
+                        </div>
+                    </li>
+
+                    <li class="feature-item">
+                        <span class="feature-icon feature-icon--green">🔄</span>
+                        <div>
+                            <strong>Empréstimos fáceis</strong>
+                            <p>Solicite e acompanhe seus livros rapidamente.</p>
+                        </div>
+                    </li>
+
+                    <li class="feature-item">
+                        <span class="feature-icon feature-icon--purple">📊</span>
+                        <div>
+                            <strong>Controle total</strong>
+                            <p>Organize seu histórico de leitura.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+
+            </div>
         </div>
 
-        <!-- Formulário de Login -->
-        <form id="form-login" class="form">
-            <h2>Login</h2>
-            <label>Email
-                <input type="email" id="login-email" required>
-            </label>
-            <label>Senha
-                <input type="password" id="login-senha" required>
-            </label>
-            <button type="submit">Entrar</button>
-        </form>
+        <div class="auth-right">
 
-        <!-- Formulário de Registro -->
-        <form id="form-registro" class="form escondido">
-            <h2>Criar conta</h2>
-            <label>Nome
-                <input type="text" id="reg-nome" required>
-            </label>
-            <label>Email
-                <input type="email" id="reg-email" required>
-            </label>
-            <label>Senha
-                <input type="password" id="reg-senha" required>
-            </label>
-            <label>Perfil
-                <select id="reg-perfil" required>
-                    <option value="leitor">Leitor</option>
-                    <option value="bibliotecario">Bibliotecário</option>
-                </select>
-            </label>
-            <button type="submit">Cadastrar</button>
-        </form>
+            <div class="auth-card">
+
+                <div class="card-brand">
+                    <span class="card-brand-icon">📚</span>
+                    <span class="card-brand-name">BookFlow</span>
+                </div>
+
+                <!-- Abas -->
+                <div class="abas">
+                    <button id="aba-login" class="aba ativa" onclick="mostrarAba('login')">
+                        Entrar
+                    </button>
+
+                    <button id="aba-registro" class="aba" onclick="mostrarAba('registro')">
+                        Cadastrar
+                    </button>
+                </div>
+
+                <p id="mensagem" class="mensagem"></p>
+
+                <!-- ================= LOGIN ================= -->
+                <form id="form-login" class="form-section">
+
+                    <h2 class="form-title">Login</h2>
+                    <p class="form-subtitle">Acesse sua conta para continuar</p>
+
+                    <div class="field-group">
+                        <label class="field-label">Email</label>
+                        <div class="field-input-wrap">
+                            <span class="field-icon"></span>
+                            <input type="email" id="login-email" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Senha</label>
+                        <div class="field-input-wrap">
+                            <input type="password" id="login-senha" required>
+                        </div>
+                    </div>
+
+                    <button type="submit">Entrar</button>
+                </form>
+
+                <!-- ================= REGISTRO ================= -->
+                <form id="form-registro" class="form-section escondido">
+
+                    <h2 class="form-title">Criar conta</h2>
+                    <p class="form-subtitle">Preencha os dados para se cadastrar</p>
+
+                    <div class="field-group">
+                        <label class="field-label">Nome</label>
+                        <div class="field-input-wrap">
+                            <span class="field-icon"></span>
+                            <input type="text" id="reg-nome" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Email</label>
+                        <div class="field-input-wrap">
+                            <span class="field-icon"></span>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Senha</label>
+                        <div class="field-input-wrap">
+                            <span class="field-icon"></span>
+                            <input type="password" id="reg-senha" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Perfil</label>
+                        <div class="field-input-wrap">
+                            <select id="reg-perfil" required>
+                                <option value="leitor">Leitor</option>
+                                <option value="bibliotecario">Bibliotecário</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+
+            </div>
+        </div>
+
     </div>
 
     <script src="auth.js"></script>
 </body>
+
 </html>

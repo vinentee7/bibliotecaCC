@@ -1,74 +1,313 @@
-/* ============================================================
-   Estilos gerais do sistema da Biblioteca
-   ============================================================ */
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: #f0f2f5;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:linear-gradient(140deg, #212b55 0%, #39456a 55%);
     color: #1c1e21;
     line-height: 1.5;
 }
 
-/* ---------- Cabeçalho dos painéis ---------- */
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
 header {
-    background: #2c3e50;
+    background: #1a2236;
     color: #fff;
-    padding: 16px 24px;
+    padding: 0 28px;
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header h1 {
-    font-size: 1.4rem;
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
 }
 
-header .usuario-info {
+.nav-brand svg {
+    color: #7c9dff;
+    flex-shrink: 0;
+}
+
+.usuario-info {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #3b4cca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    flex-shrink: 0;
 }
 
 .btn-sair {
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 14px;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
 }
-.btn-sair:hover { background: #c0392b; }
 
+.btn-sair:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================
+   LAYOUT PRINCIPAL
+   ============================================================ */
 main {
-    max-width: 1000px;
-    margin: 24px auto;
-    padding: 0 16px;
+    max-width: 1060px;
+    margin: 28px auto;
+    padding: 0 20px;
 }
 
-/* ---------- Cartões / seções ---------- */
+/* ============================================================
+   CARTÕES / SEÇÕES
+   ============================================================ */
 .card {
     background: #fff;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 24px;
     margin-bottom: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e4e7ec;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    gap: 12px;
 }
 
 .card h2 {
-    margin-bottom: 16px;
-    font-size: 1.2rem;
-    color: #2c3e50;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a2236;
 }
 
-/* ---------- Tabelas ---------- */
+.badge-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #3b4cca;
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   BUSCA
+   ============================================================ */
+.search-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9aa0ac;
+    pointer-events: none;
+}
+
+.campo-busca {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1c1e21;
+    background: #fafafa;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.campo-busca:focus {
+    outline: none;
+    border-color: #3b4cca;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.12);
+}
+
+.campo-busca::placeholder {
+    color: #adb5bd;
+}
+
+/* ============================================================
+   CATÁLOGO DE LIVROS
+   ============================================================ */
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.livro-card {
+    background: #fff;
+    border: 1px solid #e4e7ec;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.livro-card:hover {
+    border-color: #b0baf5;
+    transform: translateY(-3px);
+}
+
+/* Wrapper da capa para manter proporção consistente */
+.capa-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background: #f0f2f5;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.livro-capa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Badge de disponibilidade sobre a capa */
+.capa-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    backdrop-filter: blur(4px);
+}
+
+.capa-badge.disponivel {
+    background: rgba(22, 163, 74, 0.85);
+}
+
+.capa-badge.indisponivel {
+    background: rgba(185, 28, 28, 0.75);
+}
+
+/* Conteúdo do card */
+.livro-info {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.livro-info h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2236;
+    margin-bottom: 4px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.autor {
+    font-size: 0.8rem;
+    color: #57606a;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ano {
+    font-size: 0.75rem;
+    color: #9aa0ac;
+    margin-bottom: 10px;
+}
+
+.estoque {
+    font-size: 0.78rem;
+    color: #57606a;
+    margin-bottom: 12px;
+    margin-top: auto;
+}
+
+.estoque.zero {
+    color: #b91c1c;
+}
+
+.btn-emprestar {
+    width: 100%;
+    margin-top: 4px;
+    background: #3b4cca;
+    color: #fff;
+    border: none;
+    padding: 9px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.82rem;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.btn-emprestar:hover:not(:disabled) {
+    background: #2f3db0;
+}
+
+.btn-emprestar:disabled {
+    background: #e4e7ec;
+    color: #9aa0ac;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   TABELA DE EMPRÉSTIMOS
+   ============================================================ */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e4e7ec;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -76,56 +315,81 @@ table {
 
 th, td {
     text-align: left;
-    padding: 10px;
-    border-bottom: 1px solid #e1e4e8;
-    font-size: 0.92rem;
+    padding: 11px 14px;
+    border-bottom: 1px solid #e4e7ec;
+    font-size: 0.88rem;
 }
 
 th {
-    background: #f6f8fa;
+    background: #f8f9fb;
     color: #57606a;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-tr:hover td { background: #fafbfc; }
+tr:last-child td {
+    border-bottom: none;
+}
 
-/* ---------- Botões ---------- */
+tr:hover td {
+    background: #fafbff;
+}
+
+/* ============================================================
+   BOTÕES DE AÇÃO (TABELA)
+   ============================================================ */
 button {
     font-family: inherit;
-    font-size: 0.9rem;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-    background: #3498db;
-    color: #fff;
 }
-button:hover { opacity: 0.9; }
 
 .btn-acao {
-    padding: 6px 10px;
-    margin-right: 4px;
-    font-size: 0.82rem;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    color: #fff;
 }
-.btn-editar  { background: #f39c12; }
-.btn-excluir { background: #e74c3c; }
-.btn-ok      { background: #27ae60; }
 
-/* ---------- Formulários ---------- */
+.btn-acao:hover {
+    opacity: 0.85;
+}
+
+.btn-editar  { background: #f59e0b; }
+.btn-excluir { background: #ef4444; }
+.btn-ok      { background: #16a34a; }
+
+/* ============================================================
+   FORMULÁRIOS
+   ============================================================ */
 form label {
     display: block;
     margin-bottom: 12px;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: #444;
 }
 
 form input,
 form select {
     width: 100%;
-    padding: 9px;
+    padding: 9px 12px;
     margin-top: 4px;
-    border: 1px solid #ccd0d5;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #3b4cca;
+    box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.12);
 }
 
 .form-linha {
@@ -133,69 +397,375 @@ form select {
     gap: 12px;
     flex-wrap: wrap;
 }
-.form-linha label { flex: 1; min-width: 140px; }
 
-/* ---------- Tela de autenticação (index) ---------- */
+.form-linha label {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* ============================================================
+   TELA DE AUTENTICAÇÃO (index)
+   ============================================================ */
 .auth-container {
     max-width: 380px;
     margin: 60px auto;
     background: #fff;
     padding: 28px;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid #e4e7ec;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.auth-container h1 { margin-bottom: 16px; color: #2c3e50; }
-.auth-container h2 { margin-bottom: 16px; font-size: 1.1rem; text-align: left; }
+.auth-container h1 { margin-bottom: 16px; color: #1a2236; }
+.auth-container h2 { margin-bottom: 16px; font-size: 1.05rem; text-align: left; }
 .auth-container form { text-align: left; }
 .auth-container button[type="submit"] { width: 100%; margin-top: 8px; padding: 10px; }
 
 .abas {
     display: flex;
     margin-bottom: 20px;
-    border-bottom: 2px solid #e1e4e8;
+    border-bottom: 2px solid #e4e7ec;
 }
+
 .aba {
     flex: 1;
     background: none;
     color: #57606a;
     border-radius: 0;
     padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
 }
+
 .aba.ativa {
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
+    color: #3b4cca;
+    border-bottom: 2px solid #3b4cca;
     margin-bottom: -2px;
     font-weight: 600;
 }
 
-/* ---------- Utilitários ---------- */
+/* ============================================================
+   MENSAGENS E UTILITÁRIOS
+   ============================================================ */
 .escondido { display: none; }
 
 .mensagem {
     min-height: 20px;
     margin-bottom: 12px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0 4px;
 }
-.mensagem.erro    { color: #e74c3c; }
-.mensagem.sucesso { color: #27ae60; }
 
+.mensagem.erro {
+    color: #b91c1c;
+}
+
+.mensagem.sucesso {
+    color: #16a34a;
+}
+
+/* ============================================================
+   BADGES DE STATUS
+   ============================================================ */
 .badge {
     display: inline-block;
-    padding: 3px 9px;
-    border-radius: 12px;
-    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.72rem;
     font-weight: 600;
-    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
-.badge.ativo     { background: #3498db; }
-.badge.devolvido { background: #27ae60; }
-.badge.atrasado  { background: #e74c3c; }
 
+.badge.ativo     { background: #eef2ff; color: #3b4cca; }
+.badge.devolvido { background: #dcfce7; color: #15803d; }
+.badge.atrasado  { background: #fee2e2; color: #b91c1c; }
+.badge.pendente  { background: #fef3c7; color: #92400e; }
+
+/* ============================================================
+   VAZIO / PLACEHOLDER
+   ============================================================ */
 .vazio {
-    color: #888;
+    color: #9aa0ac;
     font-style: italic;
-    padding: 12px 0;
+    padding: 16px 0;
+    text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 768px) {
+    header {
+        padding: 0 16px;
+    }
+
+    .usuario-info span {
+        display: none;
+    }
+
+    main {
+        padding: 0 12px;
+        margin: 16px auto;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .catalogo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+        gap: 12px;
+    }
+}
+
+button[type="submit"] {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #4a6cf7;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #3a57d6;
+}
+
+#btn-cancelar {
+    margin-left: 8px;
+    padding: 10px 16px;
+    background: #9aa0ac;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn-cancelar:hover {
+    background: #7a7f87;
+}
+body.auth-page {
+    background: #f0f4ff;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+}
+ 
+.auth-split {
+    display: flex;
+    min-height: 100vh;
+}
+ 
+/* --- Lado esquerdo --- */
+.auth-left {
+    flex: 1;
+    background: linear-gradient(140deg, #13182b 0%, #39456a 55%, #f7f7f7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+}
+ 
+.auth-left-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+}
+
+ 
+.brand-icon  { font-size: 1.5rem; }
+.brand-name  { font-size: 1.1rem; font-weight: 700; color: #1a2236; }
+ 
+.auth-headline {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 14px;
+}
+ 
+.auth-headline-accent { color: hsl(214, 24%, 55%); }
+ 
+.auth-subline {
+    font-size: 0.95rem;
+    color: #eceff3;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+ 
+.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ 
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+ 
+.feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+ 
+.feature-icon--blue   { background: hsl(214, 53%, 45%); }
+.feature-icon--green  { background:hsl(214, 53%, 45%); }
+.feature-icon--purple { background: hsl(214, 53%, 45%); }
+ 
+.feature-item strong {
+    display: block;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: #fcfdfe;
+    margin-bottom: 2px;
+}
+ 
+.feature-item p {
+    font-size: 0.83rem;
+    color: #eeecec;
+    margin: 0;
+}
+ 
+/* --- Lado direito --- */
+.auth-right {
+    width: 580px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+    background: #f8fafc;
+}
+ 
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid #e4e7ec;
+    box-shadow: 0 4px 24px rgba(59, 76, 202, 0.08);
+}
+ 
+.card-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+ 
+.card-brand-icon { font-size: 1.6rem; }
+.card-brand-name { font-size: 1.2rem; font-weight: 700; color: #1a2236; }
+ 
+/* Abas dentro do card */
+.abas {
+    display: flex;
+    border-bottom: 2px solid #e4e7ec;
+    margin-bottom: 24px;
+}
+ 
+.aba {
+    flex: 1;
+    background: none;
+    color: #9aa0ac;
+    border-radius: 0;
+    border: none;
+    padding: 10px;
+    font-size: 0.93rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s;
+}
+ 
+.aba.ativa {
+    color: #3b4cca;
+    border-bottom: 2px solid #3b4cca;
+    margin-bottom: -2px;
+    font-weight: 600;
+}
+ 
+/* Seções dos formulários */
+.form-section          { display: block; }
+.form-section.escondido{ display: none;  }
+ 
+.form-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a2236;
+    margin-bottom: 4px;
+}
+ 
+.form-subtitle {
+    font-size: 0.86rem;
+    color: #64748b;
+    margin-bottom: 22px;
+}
+ 
+/* Campos com ícone */
+.field-group  { margin-bottom: 14px; }
+ 
+.field-label {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+}
+ 
+.field-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+ 
+.field-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 1rem;
+    pointer-events: none;
+    opacity: 0.55;
+}
+ 
+.field-input-wrap input,
+.field-input-wrap select {
+    width: 100%;
+    padding: 11px 12px 11px 38px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 9px;
+    font-size: 0.92rem;
+    font-family: inherit;
+    color: #1a2236;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    outline: none;
+    margin-top: 0;
+}
+ 
+.field-input-wrap input:focus,
+.field-input-wrap select:focus {
+    border-color: #3b4cca;
+    box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.12);
+    background: #fff;
 }
